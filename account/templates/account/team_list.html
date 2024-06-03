@@ -1,0 +1,17 @@
+{% extends 'home/home.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-12">
+    <h2>Teams</h2>
+    <a href="{% url 'account:team_create' %}" class="btn btn-primary mb-2">Create New Team</a>
+    <div class="list-group">
+      {% for team in teams %}
+      <a href="{% url 'account:team_detail' team.id %}" class="list-group-item list-group-item-action">
+        {{ team.name }}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

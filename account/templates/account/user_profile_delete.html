@@ -1,0 +1,12 @@
+{% extends 'home/home.html' %}
+
+{% block content %}
+<div class="alert alert-danger" role="alert">
+  Are you sure you want to delete the profile of {{ user_profile.username }}?
+</div>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-danger">Delete</button>
+  <a href="{% url 'account:user_profile_list' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock content %}

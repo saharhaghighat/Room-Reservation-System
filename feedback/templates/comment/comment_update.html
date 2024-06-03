@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Comment</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Update Comment</h1>
+
+    <!-- Display messages -->
+    <!-- {% for message in messages %} -->
+    <!--     <div class="alert alert-{{ message.tags }}">{{ message }}</div> -->
+    <!-- {% endfor %} -->
+
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="id_content">Content:</label>
+        <textarea class="form-control" id="id_content" name="content" rows="4" required>{{ comment.content }}</textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+  </div>
+</body>
+
+</html>

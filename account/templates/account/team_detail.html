@@ -1,0 +1,21 @@
+{% extends 'home/home.html' %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    Team Details
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ teams.name }}</h5>
+    <p class="card-text">Manager: {{ teams.manager.username }}</p>
+    <p>Members:</p>
+    <ul>
+      {% for member in teams.members.all %}
+      <li>{{ member.username }} ({{ member.email }})</li>
+      {% endfor %}
+    </ul>
+    <a href="{% url 'account:team_update' teams.id %}" class="btn btn-primary">Edit Team</a>
+    <a href="{% url 'account:team_delete' teams.id %}" class="btn btn-danger">Delete Team</a>
+  </div>
+</div>
+{% endblock %}

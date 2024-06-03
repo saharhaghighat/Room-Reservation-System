@@ -1,0 +1,10 @@
+{% extends 'home/home.html' %}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    <p>{{ rating.room }} - Rated by {{ rating.author }}: {{ rating.amount }}/5</p>
+    <button type="submit">Confirm</button>
+    <a href="{% url 'rating_list' rating.room.id %}">Cancel</a>
+  </form>
+{% endblock %}

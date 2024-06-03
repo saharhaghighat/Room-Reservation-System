@@ -1,0 +1,14 @@
+{% extends 'home/home.html' %}
+
+{% block content %}
+  <h2>Rating List</h2>
+  <ul>
+    {% for rating in ratings %}
+      <li>
+        {{ rating.room }} - Rated by {{ rating.author }}: {{ rating.amount }}/5
+        <a href="{% url 'rating_update' rating.id %}">Edit</a> |
+        <a href="{% url 'rating_delete' rating.id %}">Delete</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

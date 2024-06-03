@@ -1,0 +1,28 @@
+{% extends 'home/home.html' %}
+{% block content %}
+<div class="container mt-5">
+  <a href="{% url 'create-comment' room_id %}">Create Comment</a>
+    <h2 class="mb-4">Room Comments</h2>
+    <hr>
+    <div class="row">
+        <div class="col-md-8">
+            <ul class="list-group">
+                {% if comments %}
+                    {% for comment in comments %}
+                        <li class="list-group-item">
+                            <h5 class="mb-1">{{ comment.author.username }}</h5>
+                            <p class="mb-1">Comment ID: {{ comment.id }}</p> <!-- Add this line -->
+                            <p class="mb-1">{{ comment.content }}</p>
+                            <small>{{ comment.created_at }}</small>
+                        </li>
+                        <a href="{% url 'update-comment' comment.id %}">Edit</a> |
+                        <a href="{% url 'delete-comment' comment.id %}">Delete</a>
+                    {% endfor %}
+                {% else %}
+                    <li class="list-group-item">No comments found for this room.</li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

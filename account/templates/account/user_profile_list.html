@@ -1,0 +1,19 @@
+{% extends 'home/home.html' %}
+
+{% block content %}
+<div class="card">
+  <a href="{% url 'account:user_profile_create' %}" class="btn btn-primary mb-2">Create New Profile</a>
+  <div class="card-header">
+    User Profiles
+  </div>
+  <ul class="list-group list-group-flush">
+    {% for user_profile in user_profiles %}
+    <li class="list-group-item">
+      <a href="{% url 'account:user_profile_detail' user_profile.id %}">{{ user_profile.username }}</a>
+    </li>
+    {% empty %}
+    <li class="list-group-item">No profiles found.</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock content %}

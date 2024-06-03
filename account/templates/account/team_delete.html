@@ -1,0 +1,17 @@
+{% extends 'home/home.html' %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    Confirm Delete
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Are you sure you want to delete "{{ team.name }}"?</h5>
+    <form method="post">
+      {% csrf_token %}
+      <a href="{% url 'account:team_list' %}" class="btn btn-secondary">Cancel</a>
+      <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

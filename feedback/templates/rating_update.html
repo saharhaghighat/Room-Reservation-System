@@ -1,0 +1,11 @@
+{% extends 'home/home.html' %}
+
+{% block content %}
+  <h2>Rating Update</h2>
+      {{ rating.room }} - Rated by {{ rating.author }}: {{ rating.amount }}/5
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}

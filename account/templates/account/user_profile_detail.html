@@ -1,0 +1,22 @@
+{% extends 'home/home.html' %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    User Profile Detail
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ user_profile.username }}</h5>
+    <p class="card-text">Email: {{ user_profile.email }}</p>
+    <p class="card-text">Phone Number: {{ user_profile.phone_number }}</p>
+    <p class="card-text">Team: {{ user_profile.team.name }}</p>
+    {% if user_profile.profile_image %}
+      <img src="{{ user_profile.profile_image.url }}" alt="Profile Image" class="img-fluid">
+    {% else %}
+      <p class="card-text">No profile image available</p>
+    {% endif %}
+    <a href="{% url 'account:user_profile_update' user_profile.id %}" class="btn btn-primary">Edit Profile</a>
+    <a href="{% url 'account:user_profile_delete' user_profile.id %}" class="btn btn-danger">Delete Profile</a>
+  </div>
+</div>
+{% endblock content %}

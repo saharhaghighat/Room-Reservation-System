@@ -1,0 +1,35 @@
+{% extends "home/base.html" %}
+
+{% block style %}
+<style>
+  .navbar-brand {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.9rem;
+  }
+</style>
+{% endblock %}
+
+{% block title %}Home{% endblock %}
+
+{% block nav %}
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home:home' %}">Home</a>
+    {% if user_profile %}
+    <a class="navbar-brand" href="{% url 'account:user_profile_detail' user_profile.id %}">Profile</a>
+    {% endif %}
+    <a class="navbar-brand" href="{% url 'reservation:reservation-list' %}">Reservations</a>
+    <a class="navbar-brand" href="{% url 'account:team_list' %}">Teams</a>
+    <a class="navbar-brand" href="{% url 'reservation:reservation-create' %}">Reserve</a>
+    <a class="navbar-brand" href="{% url 'room:room-list' %}">Rooms</a>
+    <a class="navbar-brand" href="{% url 'account:logout' %}">Logout</a>
+  </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2 class="mb-4">Welcome to Our Room Reservation!</h2>
+  <p>Hope you Enjoy your Meetings</p>
+</div>
+{% endblock %}
